@@ -6,7 +6,6 @@ import { Notification } from 'src/app/model/notification';
 import { Reclamation } from 'src/app/model/reclamation';
 import { TransportService } from 'src/app/services/transport.service';
 import { Transport } from 'src/app/model/trasport';
-import { Location } from 'src/app/model/location';
 import { LocationService } from 'src/app/services/location.service';
 import { SourceService } from 'src/app/services/source.service';
 import { SourceTService } from 'src/app/services/source-t.service';
@@ -31,14 +30,7 @@ export class AdminDoctorantsComponent implements OnInit {
     tel:'',
     agentTypeSource:''
   }
-  locations?: Location[];
-  location: Location = {
-    id: 0,
-    adress: '',
-    coordgps: ''
-   
   
-  }
   notifications?: Notification[];
   notification: Notification = {
     id: 0,
@@ -51,7 +43,7 @@ export class AdminDoctorantsComponent implements OnInit {
 
   mode = 'list';
   pageOfItems: Array<any>;
-  reclamations?: Reclamation [];
+  reclamations?: any [];
   transports?: Transport [];
   reclamation: Reclamation ;
   cheminImage:any = "url";
@@ -110,24 +102,20 @@ export class AdminDoctorantsComponent implements OnInit {
     .subscribe(
       data => {
         this.reclamations = data;
-        console.log(data);
+        console.log(this.reclamations);
       },
       error => {
         console.log(error);
       });
   }
   onrec() {
-    if (this.mode != 'notif-reclamation') {
-      this.mode = 'notif-reclamation';
-    } else {
-      this.mode = 'list';
-    }
+    this.onSaveSource();
   }
   onSaverec() {
     {
       const data = {
         id: this.reclamation.id,
-        label: this.reclamation.dateTime,
+        dateAccident: this.reclamation.dateTime,
         description : this.reclamation.description,
         agent: this.reclamation.agent,
         infosms: this.reclamation.infoSMS,
@@ -187,24 +175,8 @@ export class AdminDoctorantsComponent implements OnInit {
           console.log(error);
         });
   }
-  onSaveLocation() {
-    {
-      const data = {
-        id: this.location.id,
-        adress: this.location.adress
-      };
-      this.locationService.create(data)
-        .subscribe(
-          response => {
-            console.log(response);
-            this.submitted = true;
-          },
-          error => {
-            console.log(error);
-          });
-    } this.mode='list';
-     }
-     onSaveSource() {
+  
+ onSaveSource() {
       {
         const data = {
           id: this.source.id,
@@ -229,7 +201,7 @@ export class AdminDoctorantsComponent implements OnInit {
     let c = confirm("Etes vous sûre ?");
     if (!c) return;
     console.log("Delete");
-    this.auth.deleteRessource(d._links.self.href).
+    this.reclamationService.delete(d).
       subscribe(
         data => {
           this.getAllrec();
@@ -244,10 +216,10 @@ export class AdminDoctorantsComponent implements OnInit {
 
   isUser()
   {
-      return this.auth.isUser();
+      return false ;//this.auth.isUser();
   }
   isUser1()
   {
-      return this.auth.isUser1();
+      return false ;//this.auth.isUser1();
   }
 }

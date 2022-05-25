@@ -2,6 +2,7 @@ export class Reclamation {
     id: number;
     description: string;
     dateTime: string;
+    degret:string;
     dateSaisie: string;
     user: string;
     sourceInfo: string;

@@ -328,11 +328,22 @@
                   <div class="col-md-12 ">
                     <div class="form-group">
                       <label>Date Accidant </label>
-                      <input type="date" name="DateTime" ngModel class="form-control" placeholder="Date Time" value="">
+                      <input type="date" name="DateTime" [(ngModel)]="reclamation.dateaccidant" class="form-control" placeholder="Date Time" value="">
                     </div>
                   </div>
                  
                 </div>
+                
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Emplacement</label>
+                      <input type="text" class="form-control" name="name" [(ngModel)]="reclamation.location" required id="name">
+                    </div>
+                  </div>
+                </div>
+
+                 
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
@@ -342,22 +353,13 @@
                     </div>
                   </div>
                 </div>
-                
                 <div class="row">
-                  <div class="form-group">
-                  <div class="input-group col-md-12">
-                    <div class="input-group-prepend">
-                      <label class="input-group-text text-uppercase " for="inputGroupSelect01"> Degret  &nbsp;&nbsp;  &nbsp;       </label>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Degret</label>
+                      <input type="text" class="form-control" name="degret" [(ngModel)]="reclamation.degret" required id="degret">
                     </div>
-                    <select class="custom-select" id="inputGroupSelect01">
-                      <option selected>degret</option>
-                      <option value="1">One</option>
-                      <option value="1">One1</option>
-                      <option value="1">One2</option>
-                      <option value="1">One3</option>
-                    </select>
                   </div>
-                 </div> 
                 </div>
                 
                 <div class="row">
@@ -447,35 +449,7 @@
                   </div>
                  </div> 
                 </div>
-                <div class="header">
-                  <h4 class="title">Emplacement</h4>
-                </div>
-                <div class="row">
-                  <div class="col-md-3">
-                    <div class="form-group">
-                      <label class="form-control-label" for="input-address">Latitude</label>
-                      <input id="input-address" class="form-control form-control-alternative" placeholder="Adresse"
-                        value="" type="text">
-                    </div>
-                  </div>
-
-
-                  <div class="col-md-3">
-                    <div class="form-group">
-                      <label class="form-control-label" for="input-address">longetude </label>
-                      <input type="text" class="form-control" name="coordgps" [(ngModel)]="location.coordgps" required id="coordgps"
-                      #username="ngModel">
-                    </div>
-                  </div>
-                  
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="form-control-label" for="input-address">Adresse </label>
-                      <input type="text" class="form-control" name="adress" [(ngModel)]="location.adress" required id="adress"
-                      #username="ngModel">
-                    </div>
-                  </div>
-                </div>
+                
                 <div class="row">
                   
                   <div class="col-md-6">
