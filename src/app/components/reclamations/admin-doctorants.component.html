@@ -1,0 +1,632 @@
+<div class="card">
+  <div class="header">
+
+    <h4 class="title"><span class="now-ui-icons files_single-copy-04"></span>Reclamation</h4>
+    <br>
+    <p class="category">Gestions d'incident et Accident</p>
+   
+    <button *ngIf="mode == 'list'" rel="tooltip" title="Ajouter un doctorant"
+      class="btn btn-success btn-fill now-ui-icons ui-1_simple-add" (click)="onNewReclamation()">Ajouter</button>
+    <div class="content">
+      <div *ngIf="mode == 'notif-reclamation'" class="content">
+        <div class="ct-chart">
+          <div class="table-responsive">
+            <table class="table">
+                <thead class="text-success">
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Nom
+                    </th>
+                    <th>
+                        Function
+                    </th>
+                      <th>
+                         Email
+                      </th>
+                      <th>
+                        Telephone
+                     </th>
+                     <th>
+                      Statue
+                   </th>
+                    
+                </thead>
+                <tbody>
+                   
+                    
+                    <tr *ngFor="let notif of notifications">
+                        <td >
+                            {{notif.id}}
+                        </td>
+                        <td>
+                          {{notif.name}}
+                        </td>
+                        <td>
+                          {{notif.fonction}}
+                        </td>
+                        <td>
+                          {{notif.email}}
+                      </td>
+                      <td>
+                        {{notif.tel}} 
+                    </td>
+                        <td >
+                          <div *ngIf="!isActive" class="custom-control custom-switch">
+                              <input  class="custom-control-input" id="customSwitch2">
+                              <label class="custom-control-label" for="customSwitch2">
+                                  <div class="badge badge-danger text-wrap" style="width: 6rem;">
+                                  Disactive
+                                </div>
+                              </label>
+                            </div>
+                        </td>
+                        <td>
+                        <div *ngIf="isActive" class="custom-control custom-switch1">
+                          <input  class="custom-control-input" id="customSwitch1">
+                          <label class="custom-control-label" for="customSwitch1">
+                              <div class="badge badge-success text-wrap" style="width: 6rem;">
+                              active
+                            </div>
+                          </label>
+                        </div>
+                      </td>
+                    
+                        <td class="text-center">
+                            <button  rel="tooltip" title="Ajouter un doctorant" class="btn btn-danger btn-fill float-right now-ui-icons objects_spaceship"
+                              (click)="OnDeleteRec()"></button>
+                            <button  rel="tooltip" title="Ajouter un doctorant" class="btn btn-secondary btn-fill float-right now-ui-icons  arrows-1_refresh-69"
+                              (click)="oneditRec()"></button>
+                            <button  rel="tooltip" title="Ajouter un doctorant" class="btn btn-success btn-fill float-right now-ui-icons files_box"
+                              (click)="onReclamation()"></button>
+                         
+                          </td>
+                    </tr>
+                    
+                  
+                </tbody>
+                  <button (click)="onSaveRec()" type="submit"
+                    class="btn bg-success btn-fill float-right">envoyer</button>
+            </table>
+            </div>
+        </div>
+  
+      </div>
+      <!-- <div *ngIf="mode=='edit-Reclamation'" class="container ">
+        <div class="row">
+          <div class="col-md-12 card">
+            <div class="header">
+              <h4 class="title">Reclamation</h4>
+
+                  
+            </div>
+            <div class="content">
+              <form #f="ngForm" (ngSubmit)="onSaveRec(f.value)">
+                
+                <div class="row">
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Date Time </label>
+                      <input type="date" name="DateTime" ngModel class="form-control" placeholder="Date Time" value="">
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="exampleFormControlTextarea1">Description</label>
+                      <textarea name="discription" ngModel class="form-control" id="exampleFormControlTextarea1"
+                        rows="2"></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Valeur de Dégat</label>
+                      <input id="input-address" class="form-control form-control-alternative" placeholder="valeurdegat"
+                        value="" type="text">
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Nombre de Dégat</label>
+                      <input id="input-address" class="form-control form-control-alternative" placeholder="nbrdegat"
+                        value="" type="text">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Numéro telephone de source </label>
+                      <input id="input-address" class="form-control form-control-alternative"
+                        placeholder="Numéro telephone de source" value="" type="text">
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Nom de Source</label>
+                      <input id="input-address" class="form-control form-control-alternative"
+                        placeholder="Nom de Source" value="" type="text">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">CORDONNE GPS</label>
+                      <input id="input-address" class="form-control form-control-alternative" placeholder="Adresse"
+                        value="" type="text">
+                    </div>
+                  </div>
+
+
+                  
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                   
+                  </div>
+                </div>
+                <br>
+
+                <div class="row">
+                  <div class="col-lg-7">
+                    <button type="reset" (click)="onCancel()"
+                      class="btn btn-danger btn-fill float-right now-ui-icons arrows-1_minimal-left"></button>
+
+                  
+                      <button type="submit" class="btn bg-success btn-fill float-right" *ngIf="isUser()" (click)="onEditRec()" >Modifier</button>
+                      <button type="submit" class="btn bg-success btn-fill float-right" *ngIf="isAdmin()" (click)="onEditRec()" >Modifier</button>
+
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div *ngIf="mode=='detaille-reclamation'" class="container ">
+        <div class="row">
+          <div class="col-md-12 card">
+            <div class="header">
+              <h4 class="title">Reclamation</h4>
+            </div>
+            <div class="content">
+              <form #f="ngForm" (ngSubmit)="onSaveRec(f.value)">
+                <div class="row">
+                  <div class="col-md-12 ">
+                    <div class="form-group">
+                      <label>Date Time </label>
+                      <input type="date" name="DateTime" ngModel class="form-control" placeholder="Date Time" value="">
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="exampleFormControlTextarea1">Description</label>
+                      <textarea name="discription" ngModel class="form-control" id="exampleFormControlTextarea1"
+                        rows="2"></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Valeur de Dégat</label>
+                      <input id="input-address" class="form-control form-control-alternative" placeholder="valeurdegat"
+                        value="" type="text">
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Nombre de Dégat</label>
+                      <input id="input-address" class="form-control form-control-alternative" placeholder="nbrdegat"
+                        value="" type="text">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Numéro telephone de source </label>
+                      <input id="input-address" class="form-control form-control-alternative"
+                        placeholder="Numéro telephone de source" value="" type="text">
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Nom de Source</label>
+                      <input id="input-address" class="form-control form-control-alternative"
+                        placeholder="Nom de Source" value="" type="text">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Adresse</label>
+                      <input id="input-address" class="form-control form-control-alternative" placeholder="Adresse"
+                        value="" type="text">
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Cordonne GPS </label>
+                      <input id="input-address" class="form-control form-control-alternative" placeholder="nbrdegat"
+                        value="" type="text">
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <img [src]="cheminImage"/>
+                  <br>
+                    </div>
+                  </div>
+                  
+                </div> 
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-check">
+                    <label class="form-check-label" for="exampleCheck1">
+                      <input name="activated" ngModel name="active" ngModel type="checkbox" class="form-check-input"
+                        id="exampleCheck1">
+                      <span class="form-check-sign"></span> Activé</label>
+                  </div> 
+                  </div>
+                </div>
+                <br>
+
+               <div class="row">
+                  <div class="col-lg-7">
+                    <button type="reset" (click)="onCancel()"
+                      class="btn btn-danger btn-fill float-left now-ui-icons arrows-1_minimal-left"></button>
+
+                  </div>
+                </div> 
+                <div class="clearfix"></div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div> -->
+      <div *ngIf="mode=='new-reclamation'" class="container ">
+        <div class="row">
+          <div class="col-md-12 card">
+            <div class="header">
+              <h3 class="title">Reclamation</h3>
+              
+            </div>
+            <div class="content">
+              <form #f="ngForm" >
+                <div class="row">
+                  <div class="col-md-12 ">
+                    <div class="form-group">
+                      <label>Date Accidant </label>
+                      <input type="date" name="DateTime" ngModel class="form-control" placeholder="Date Time" value="">
+                    </div>
+                  </div>
+                 
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="exampleFormControlTextarea1">Description</label>
+                      <textarea name="discription" ngModel class="form-control" id="exampleFormControlTextarea1"
+                        rows="2"></textarea>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <div class="form-group">
+                  <div class="input-group col-md-12">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text text-uppercase " for="inputGroupSelect01"> Degret  &nbsp;&nbsp;  &nbsp;       </label>
+                    </div>
+                    <select class="custom-select" id="inputGroupSelect01">
+                      <option selected>degret</option>
+                      <option value="1">One</option>
+                      <option value="1">One1</option>
+                      <option value="1">One2</option>
+                      <option value="1">One3</option>
+                    </select>
+                  </div>
+                 </div> 
+                </div>
+                
+                <div class="row">
+                  <div class="form-group">
+                  <div class="input-group col-md-12">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text text-uppercase " for="inputGroupSelect01"> Moyen De transport &nbsp;&nbsp;  &nbsp;       </label>
+                    </div>
+                    <select class="custom-select" id="inputGroupSelect01">
+                      <option selected>type</option>
+                      <option *ngFor="let trans of transports" >{{trans.id}} &nbsp; {{trans.number}} &nbsp; {{trans.marque}}&nbsp; {{trans.meansOfTransportType.label}} </option>
+                    </select>
+                  </div>
+                 </div> 
+                </div>
+                <div class="header">
+                  <h4 class="title">degat</h4>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Valeur</label>
+                      <input id="input-address" class="form-control form-control-alternative" placeholder="valeurdegat"
+                        value="" type="text">
+                    </div>
+                  </div>
+                  
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Nombre </label>
+                      <input id="input-address" class="form-control form-control-alternative" placeholder="nbrdegat"
+                        value="" type="text">
+                    </div>
+                  </div>
+                
+                <div class="col-md-4">
+                <div class="form-group">
+                  <div class="input-group ">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text text-uppercase " for="inputGroupSelect01"> Degat &nbsp;&nbsp;  &nbsp;       </label>
+                    </div>
+                    <select class="custom-select" id="inputGroupSelect01">
+                      <option selected>metro-2...</option>
+                      <option value="1">One</option>
+                      <option value="1">One1</option>
+                      <option value="1">One2</option>
+                      <option value="1">One3</option>
+                    </select>
+                  </div>
+                 </div> 
+                </div>
+                <button  title="Ajouter un degat"
+                class="btn btn-success btn-fill now-ui-icons ui-1_simple-add" (click)="addvalue()"></button>
+              </div>
+                <div class="header">
+                  <h4 class="title">Source</h4>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Nom  </label>
+                      <input type="text" class="form-control" name="name" [(ngModel)]="source.name" required id="name"
+                      #username="ngModel">
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Numéro telephone</label>
+                      <input type="text" class="form-control" name="tel" [(ngModel)]="source.tel" required id="tel"
+                      #username="ngModel">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group">
+                  <div class="input-group col-md-12">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text text-uppercase " for="inputGroupSelect01"> Source Type &nbsp;&nbsp;  &nbsp;       </label>
+                    </div>
+                    <select [(ngModel)]="source.agentTypeSource" name="source.agentTypeSource" class="custom-select" id="inputGroupSelect01">
+                      <option selected>type</option>
+                      <option *ngFor="let s of sourcest" [(ngValue)]="s.id" >{{s.label}} </option>
+                    </select>
+                  </div>
+                 </div> 
+                </div>
+                <div class="header">
+                  <h4 class="title">Emplacement</h4>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Latitude</label>
+                      <input id="input-address" class="form-control form-control-alternative" placeholder="Adresse"
+                        value="" type="text">
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">longetude </label>
+                      <input type="text" class="form-control" name="coordgps" [(ngModel)]="location.coordgps" required id="coordgps"
+                      #username="ngModel">
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Adresse </label>
+                      <input type="text" class="form-control" name="adress" [(ngModel)]="location.adress" required id="adress"
+                      #username="ngModel">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <p class="text-center  description">Vous n'avez pas les cordonne GPS ? <a href="menu/maps">Maps</a></p>
+                    <br>
+                    </div>
+                  </div>
+                </div>
+                <div class="header">
+                  <h4 class="title">Vectime</h4>
+                </div>
+                <div class="row">
+                  
+                  <ul class="nav nav-tabs">
+                    
+                    <li class="active" ><button class="btn btn-success"><a data-toggle="tab" href="#menu1"><h5>Vectime Externe</h5></a></button></li><br>
+                    <li class="active" ><button class="btn btn-success"><a data-toggle="tab" href="#menu2"><h5>Vectime Interne</h5></a></button></li><br>
+                  </ul>
+                  
+                  <div class="tab-content">
+                    
+                    <div id="menu1" class="tab-pane fade in active">
+                      <h3>Externe</h3>
+                      <div class="row">
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label class="form-control-label" for="input-address">Nom</label>
+                            <input id="input-address" class="form-control form-control-alternative" placeholder="Adresse"
+                              value="" type="text">
+                          </div>
+                        </div>
+                        <div class="col-md-5">
+                          <div class="form-group">
+                            <label class="form-control-label" for="input-address">Télephone</label>
+                            <input id="input-address" class="form-control form-control-alternative" placeholder="nbrdegat"
+                              value="" type="text">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="menu2" class="tab-pane fade">
+                      <h3>Interne</h3>
+                      <div class="row">
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label class="form-control-label" for="input-address">Nom</label>
+                            <input id="input-address" class="form-control form-control-alternative" placeholder="Adresse"
+                              value="" type="text">
+                          </div>
+                        </div>
+      
+      
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label class="form-control-label" for="input-address">Register Number </label>
+                            <input id="input-address" class="form-control form-control-alternative" placeholder="nbrdegat"
+                              value="" type="text">
+                          </div>
+                        </div>
+                        
+                        <div class="col-md-5">
+                          <div class="form-group">
+                            <label class="form-control-label" for="input-address">Télephone</label>
+                            <input id="input-address" class="form-control form-control-alternative" placeholder="nbrdegat"
+                              value="" type="text">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div> 
+                </div>
+                <div class="header">
+                  <h4 class="title">Image</h4>
+                </div>
+                <div class="row">
+                  
+                  <div class="col-md-12">
+                    <label class="image-upload-container btn btn-success">
+                      <span>Select Image </span>
+                      <input #imageInput type="file" accept="image/*" (change)="processFile(imageInput)">
+                    </label>
+                  </div>
+                </div>
+                
+                <br>
+
+                <div class="row">
+                  <div class="col-lg-7">
+                    <button type="reset" (click)="onCancel()"
+                    class="btn btn-danger btn-fill float-right now-ui-icons arrows-1_minimal-left"></button>
+                      <button type="submit" class="btn bg-success btn-fill float-right" *ngIf="isAdmin()" (click)="onrec()">Ajouter</button>
+
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div *ngIf="mode == 'list'" class="content">
+        <div class="ct-chart">
+          <div class="table-full-width">
+
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr >
+                  <th class="text-center"> ID</th>
+                  <th class="text-center"> description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="button" *ngFor="let rec of reclamations">
+
+                  <td class="text-center"><i class="now-ui-icons files_single-copy-04"></i> {{rec.id}} </td>
+                  <td class="text-center">{{rec.description}} </td>
+                  <td class="text-left">
+                    <button *ngIf="isAdmin()" rel="tooltip" title="Ajouter un doctorant" class="btn btn-danger btn-fill float-right now-ui-icons objects_spaceship"
+                      (click)="OnDeleteRec()"></button>
+                    <button *ngIf="isAdmin()" rel="tooltip" title="Ajouter un doctorant" class="btn btn-secondary btn-fill float-right now-ui-icons  arrows-1_refresh-69"
+                      (click)="oneditRec()"></button>
+                    <button *ngIf="isAdmin()" rel="tooltip" title="Ajouter un doctorant" class="btn btn-success btn-fill float-right now-ui-icons files_box"
+                      (click)="onReclamation()"></button>
+                    <button *ngIf="isUser1()" rel="tooltip" title="Ajouter un doctorant" class="btn btn-success btn-fill float-right now-ui-icons files_box "
+                      (click)="onReclamation()"></button>  
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <div *ngIf="mode == 'list'" class="legend text-center">
+          <div class="pagination pagination-primary text-center">
+            <jw-pagination [items]="doctorants" [pageSize]="3" (changePage)="onChangePage($event)"></jw-pagination>
+          </div>
+          <br>
+        </div>
+        <hr *ngIf="true">
+        <div class="stats">
+          <i [ngClass]="'fa fa-clock-o'"></i> Transtu © 2022
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--
+  *ngFor=" let d of pageOfItems {{d.id}} affichage par base
+-->

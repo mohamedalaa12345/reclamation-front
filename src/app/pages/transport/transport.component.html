@@ -1,0 +1,270 @@
+<div class="card bg">
+  <div class="header">
+    <h4 class="title"><span class="now-ui-icons transportation_bus-front-12"></span>Moyen de Transport</h4>
+    <br>
+    <button *ngIf="mode == 'list'" rel="tooltip" title="Ajouter un Extincteur"
+      class="btn bg-success btn-fill now-ui-icons ui-1_simple-add" (click)="onNewTransport()"></button>
+   
+      <div *ngIf="submitted" class="alert alert-success alert-dismissible fade show" role="alert">
+        <h4>Insert Succussfully !</h4>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true"><i class="now-ui-icons objects_spaceship"></i></span>
+        </button>
+      </div>
+  <div class="container-fluid mt--7">
+    <!-- <div *ngIf="mode=='detaille'" class="container ">
+      <div class="card  shadow">
+        <div class="card-header bg-success border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0 text-white">Moyen de transport </h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card" style="width: 30rem;">
+            <img
+              src="../../../assets/img/sidebar-5.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body" >
+              <h5 class="card-title">Equipement :</h5>
+            </div>
+            <ul class="list-group list-group-flush" *ngFor="let d of detailleE">
+              <li class="list-group-item">Réference : {{d.ref}}</li>
+              <li class="list-group-item">Emplacement {{d.emplacement}}:</li>
+              <li class="list-group-item">Adresse {{d.adress}}:</li>
+              <li class="list-group-item">Date Entretien {{d.dateEntretien}}:</li>
+              <li class="list-group-item">Type :</li>
+            </ul>
+            <button type="reset" (click)="onCancel()" class="btn btn-danger btn-fill float-right">Retour</button>
+
+            <button type="reset" (click)="onEditEquipement()" class="btn btn-danger btn-fill float-right">Retour</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <div *ngIf="mode=='new-transport'" class="container ">
+      <div class="card  shadow">
+        <div class="card-header bg-success border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0 text-white">Moyen de Transport</h3>
+            </div>
+
+
+          </div>
+        </div>
+        <div class="card-body">
+          <form >
+            <h6 class="heading-small text-muted mb-4">Information de Moyen </h6>
+            <div class="pl-lg-4">
+            
+              <div class="row ">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-address">Number</label>
+                    <input type="text" class="form-control" [(ngModel)]="transport.number"  [ngModelOptions]="{standalone: true}" 
+                      #username="ngModel">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label  class="form-control-label" for="input-address">Marque</label>
+                    <input type="text" class="form-control"  [(ngModel)]="transport.marque"  [ngModelOptions]="{standalone: true}" >
+                  </div>
+                </div>
+              </div>
+              
+             <div class="row">
+                <div class="form-group">
+                <div class="input-group col-md-12">
+                  <div class="input-group-prepend ">
+                    <label class="input-group-text bg-success" for="inputGroupSelect01"> Type de Moyen De transport &nbsp;&nbsp;  &nbsp;       </label>
+                     <select [(ngModel)]="transport.meansOfTransportType" name="transport.meansOfTransportType"   class="custom-select" id="transport.meansOfTransportType">
+                      
+                      <option  *ngFor="let transt of transportst" [(ngValue)]="transt.id">{{transt.label}}</option>
+                      
+                    </select> 
+                  </div>
+                  
+                </div>
+               </div> 
+              </div>  
+              
+              <div class="row"> 
+                <div class="col-lg-12">
+                  <button type="reset" (click)="onCancel()"
+                   class="btn btn-secondary btn-fill float-right">Annuler</button>
+                  <button (click)="onSaveTransport()" type="submit" class="btn bg-success btn-fill float-right"  >Enregistrer</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        
+      </div>
+    <!-- </div>
+    <div *ngIf="mode=='edit-transport'" class="container ">
+      <div class="card  shadow">
+        <div class="card-header bg-success border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0 text-white">Moyen de Transport</h3>
+            </div>
+
+
+          </div>
+        </div>
+        <div class="card-body">
+          <form >
+            <h6 class="heading-small text-muted mb-4">Information de Moyen </h6>
+            <div class="pl-lg-4">
+            
+              <div class="row ">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-address">Number</label>
+                    <input type="text" class="form-control" [(ngModel)]="transport.number" required id="number" [ngModelOptions]="{standalone: true}" 
+                      #username="ngModel">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-address">Marque</label>
+                    <input type="text" class="form-control"  [(ngModel)]="transport.marque" required id="marque" [ngModelOptions]="{standalone: true}"
+                      #username="ngModel">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group">
+                <div class="input-group col-md-12">
+                  <div class="input-group-prepend ">
+                    <label class="input-group-text bg-success"  for="inputGroupSelect01"> Type de Moyen De transport &nbsp;&nbsp;  &nbsp;       </label>
+                  </div>
+                  <select ngFor="let transt of transportst" class="custom-select" id="transportst.id">
+                    <option >{{transt.label}}</option>
+                    
+                  </select>
+                </div>
+               </div> 
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-address">Nom de Depot</label>
+                    <input id="input-address" type="text"
+                    class="form-control"
+                    name="nomDepot"
+                    [(ngModel)]="form.nomDepot"
+                    required
+                    minlength="3"
+                    maxlength="20"
+                    #username="ngModel">
+                  </div>
+                  
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-address">Code de Depot</label>
+                    <input id="input-address" type="text"
+                    class="form-control"
+                    name="coded"
+                    [(ngModel)]="form.codeDepots"
+                    required
+                    minlength="3"
+                    maxlength="20"
+                    #username="ngModel">
+                  </div>
+                  
+                </div>
+              </div>
+              <div class="row"> 
+                <div class="col-lg-12">
+                  <button type="reset" (click)="onCancel()"
+                    class="btn btn-secondary btn-fill float-right">Annuler</button>
+                  <button type="submit" class="btn bg-success btn-fill float-right" *ngIf="isUser()" >Ajouter</button>
+                  <button type="submit" class="btn bg-success btn-fill float-right" *ngIf="isAdmin()" >Ajouter</button>
+                </div>
+              </div>
+            </div>
+
+
+
+          </form>
+        </div>
+      </div>
+    </div> -->
+  </div>
+  <div div *ngIf="mode == 'list'" class="content">
+    <div class="col">
+      <div class="card bg-success shadow">
+        <div class="card-header bg-success border-0">
+          <h3 class="text-white mb-0">Liste De Moyen de Transport</h3>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table align-items-center table-success table-flush">
+            <thead class="thead-success">
+              <tr>
+                <th scope="col">Numero</th>
+                <th scope="col">Marque</th>
+                <th scope="col">type</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let trans of transports">
+                <th scope="row">
+                  <div class="media align-items-center">
+
+                    <div class="media-body">
+                      <span class="mb-0 text-sm">{{trans.number}}</span>
+                    </div>
+                  </div>
+                </th>
+
+                <td>
+                  <div class="media align-items-center">
+
+                    <div class="media-body">
+                      <span class="mb-0 text-sm">{{trans.marque}}</span>
+                    </div>
+                  </div>
+
+                </td>
+
+                <td>
+                  <div class="d-flex align-items-center" >
+                    <span class="mr-2">{{trans.meansOfTransportType.label}}</span>
+                    <div>
+                      <div class="progress">
+                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                          aria-valuemax="100" style="width: 60%;"></div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-left">
+                  <button *ngIf="isAdmin()" rel="tooltip" title="Ajouter un doctorant" class="btn btn-danger btn-fill float-right now-ui-icons objects_spaceship"
+                    (click)="OnDeleteTransport(trans.id)"></button>
+                  <button *ngIf="isAdmin()" rel="tooltip" title="Ajouter un doctorant" class="btn btn-secondary btn-fill float-right btn btn-secondary btn-fill float-right now-ui-icons  arrows-1_refresh-69"
+                    (click)="detaille()"></button> 
+                  </td>
+              </tr>
+              
+
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

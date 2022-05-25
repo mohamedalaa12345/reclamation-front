@@ -1,0 +1,174 @@
+'<h4 class="title"><span class="now-ui-icons transportation_bus-front-12"></span> &nbsp; Stations</h4>
+<div class="card bg">
+  <div class="header">
+    <br>
+    <button *ngIf="mode == 'list'" rel="tooltip" title="Ajouter un Extincteur"
+      class="btn bg-success btn-fill now-ui-icons ui-1_simple-add" (click)="onNewStation()"></button>
+    <div *ngIf="submitted">
+      <h4>Station was submitted successfully!</h4>
+    </div>
+  </div>
+  <div class="container-fluid mt--7">
+
+    <div *ngIf="mode=='edit-station'" class="container ">
+      <div class="card  shadow">
+        <div class="card-header bg-success border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0 text-white">Stations</h3>
+            </div>
+
+
+          </div>
+        </div>
+        <div class="card-body">
+          <form>
+            <h6 class="heading-small text-muted mb-4">Information de Station </h6>
+            <div class="pl-lg-4">
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="form-control-label" value="" for="input-address">Code Station</label>
+                    <input type="text" class="form-control" name="password" [(ngModel)]="form.password" required
+                      minlength="3" maxlength="20" #username="ngModel">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-address">Nom de Station</label>
+                    <input id="input-address" class="form-control form-control-alternative" placeholder="FAFA" value=""
+                      type="text">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <button type="reset" (click)="onCancel()"
+                    class="btn btn-secondary btn-fill float-right">Annuler</button>
+                  <button (click)="onSaveStation()" type="submit" class="btn bg-success btn-fill float-right"
+                    *ngIf="isUser()">Enrigistrer</button>
+                  <button (click)="onSaveStation()" type="submit" class="btn bg-success btn-fill float-right"
+                    *ngIf="isAdmin()">Enrigistrer</button>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Description -->
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid mt--7">
+    <div *ngIf="mode=='new-station'" class="container ">
+      <div class="card  shadow">
+        <div class="card-header bg-success border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0 text-white">Station</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <form>
+            <h6 class="heading-small text-muted mb-4">Information de Station </h6>
+            <div class="pl-lg-4">
+
+              <div class="row ">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-address">Code Station</label>
+                    <input type="text" class="form-control" name="code" [(ngModel)]="station.code" required id="code"
+                      #username="ngModel">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-address">Nom</label>
+                    <input type="text" class="form-control" name="label" [(ngModel)]="station.label" required id="label"
+                      #username="ngModel">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <button type="reset" (click)="onCancel()"
+                    class="btn btn-secondary btn-fill float-right">Annuler</button>
+                  <button (click)="onSaveStation()" type="submit"
+                    class="btn bg-success btn-fill float-right">Ajouter</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div div *ngIf="mode == 'list'" class="content">
+    <div class="col">
+      <div class="card bg-success shadow">
+        <div class="card-header bg-success border-0">
+          <h3 class="text-white mb-0">Liste Des Stations </h3>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table align-items-center table-success table-flush">
+            <thead class="thead-success">
+              <tr>
+
+                <th scope="col">Code</th>
+                <th scope="col">Nom </th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let stat of stations; let i = index " [class.active]="i == currentIndex"
+                (click)="setActiveTutorial(tutorial, i)">
+                <th scope="row">
+                  <div class="media align-items-center">
+
+                    <div class="media-body">
+                      <span class="mb-0 text-sm">{{stat.code}}</span>
+                    </div>
+                  </div>
+                 </th>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <span class="mr-2">{{stat.label}}</span>
+                    <div>
+                      <div class="progress">
+                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                          aria-valuemax="100" style="width: 60%;"></div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+
+                <td class="text-left">
+                  <button *ngIf="isAdmin()" rel="tooltip" title="Ajouter" 
+                    class="btn btn-danger btn-fill float-right now-ui-icons objects_spaceship"
+                    (click)="OnDeleteStation(station.id)"></button>
+                  <button *ngIf="isAdmin()" rel="tooltip" title="Ajouter"
+                    class="btn btn-secondary btn-fill float-right btn btn-secondary btn-fill float-right now-ui-icons  arrows-1_refresh-69"
+                    (click)="onEditStation(station.id)"></button>
+
+                </td>
+
+              </tr>
+
+
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

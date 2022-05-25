@@ -1,0 +1,28 @@
+
+@import "src/assets/sass/light-bootstrap-dashboard-all.scss";
+
+.form-check {
+  padding-left: 0rem;
+}
+
+
+label{
+  font-weight: 400 !important;
+}
+.legend{
+  width: 100%;
+}
+.input-group-text{
+  font-weight: 600 !important;
+  color: rgb(0, 0, 0)
+}
+.bg {
+  /* The image used */
+  background-image: url("../../../assets/img/loginbackgroung.png");
+  /* Half height */
+  height: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

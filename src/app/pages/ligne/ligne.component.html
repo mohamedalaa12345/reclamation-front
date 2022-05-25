@@ -1,0 +1,361 @@
+<div class="card bg">
+    <div class="header">
+      <h4 class="title"><span class="now-ui-icons design_vector"></span>  Ligne</h4>
+      <br>
+      <button *ngIf="mode == 'list'" rel="tooltip" title="Ajouter un Extincteur"
+        class="btn bg-success btn-fill now-ui-icons ui-1_simple-add" (click)="onNewLigne()"></button>
+  
+    </div>
+    <div class="container-fluid mt--7">
+      <div *ngIf="mode=='detaille'" class="container ">
+        <div class="card  shadow">
+          <div class="card-header bg-success border-0">
+            <div class="row align-items-center">
+              <div class="col-8">
+                <h3 class="mb-0 text-white">Ligne</h3>
+              </div>
+  
+  
+            </div>
+          </div>
+          <div class="card-body">
+            <form >
+              <h6 class="heading-small text-muted mb-4">Information de Ligne </h6>
+              <div class="pl-lg-4">
+              
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Code</label>
+                      <input id="input-address" type="text"
+                      class="form-control"
+                      name="code"
+                      [(ngModel)]="form.code"
+                      required
+                      minlength="3"
+                      maxlength="20"
+                      #username="ngModel">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Nom</label>
+                      <input id="input-address" type="text"
+                      class="form-control"
+                      name="Nom"
+                      [(ngModel)]="form.Nom"
+                      required
+                      minlength="3"
+                      maxlength="20"
+                      #username="ngModel">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Code Dépóts</label>
+                      <input type="text"
+                      class="form-control"
+                      name="code"
+                      [(ngModel)]="form.coded"
+                      required
+                      minlength="3"
+                      maxlength="20"
+                      #username="ngModel">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-address">Type</label>
+                        <input id="input-address" type="text"
+                        class="form-control"
+                        name="type"
+                        [(ngModel)]="form.type"
+                        required
+                        minlength="3"
+                        maxlength="20"
+                        #username="ngModel">
+                      </div>
+                    </div>
+                  
+                </div><br>
+               
+                <div class="row"> 
+                  <div class="col-lg-12">
+                    <button type="reset" (click)="onCancel()"
+                      class="btn btn-danger btn-fill float-right">Annuler</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+        <div *ngIf="mode=='edit-ligne'" class="container ">
+          <div class="card  shadow">
+            <div class="card-header bg-success border-0">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0 text-white">Ligne</h3>
+                </div>
+    
+    
+              </div>
+            </div>
+            <div class="card-body">
+              <form >
+                <h6 class="heading-small text-muted mb-4">Information de Ligne </h6>
+                <div class="pl-lg-4">
+                
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-address">Code Ligne</label>
+                        <input id="input-address" type="text"
+                        class="form-control"
+                        name="codeLigne"
+                        [(ngModel)]="form.codeLigne"
+                        required
+                        minlength="3"
+                        maxlength="20"
+                        #username="ngModel">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-address">Nom de Ligne</label>
+                        <input id="input-address" type="text"
+                        class="form-control"
+                        name="nomLigne"
+                        [(ngModel)]="form.nomLigne"
+                        required
+                        minlength="3"
+                        maxlength="20"
+                        #username="ngModel">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-address">Code Dépóts</label>
+                        <input id="input-address" type="text"
+                        class="form-control"
+                        name="codeDepots"
+                        [(ngModel)]="form.codeDepots"
+                        required
+                        minlength="3"
+                        maxlength="20"
+                        #username="ngModel">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="row form-group">
+                      <div class="col-md-12">
+                        <label class="control-label">Type</label><br/>
+                        <select friendly-name="role" id="role" name="role" class="col-md-12 form-control" ng-required="true"
+                          onchange='OnChange()'>
+                          <option>Type</option>
+                          <option>type1</option>
+                          <option>type2</option>
+                          
+    
+                        </select>
+                      </div>
+                    </div>
+                  </div><br>
+                 
+                  <div class="row"> 
+                    <div class="col-lg-12">
+                      <button type="reset" (click)="onCancel()"
+                        class="btn btn-secondary btn-fill float-right">Annuler</button>
+                      <button type="submit" (click)="onSaveLigne()" class="btn bg-success btn-fill float-right" *ngIf="isUser()" >Enrigistrer</button>
+                      <button type="submit"  (click)="onSaveLigne()" class="btn bg-success btn-fill float-right" *ngIf="isAdmin()" >Enrigistrer</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="container-fluid mt--7">
+  
+      <div *ngIf="mode=='new-ligne'" class="container ">
+        <div class="card  shadow">
+          <div class="card-header bg-success border-0">
+            <div class="row align-items-center">
+              <div class="col-8">
+                <h3 class="mb-0 text-white">Ligne</h3>
+              </div>
+  
+  
+            </div>
+          </div>
+          <div class="card-body">
+            <form >
+              <h6 class="heading-small text-muted mb-4">Information de Ligne </h6>
+              <div class="pl-lg-4">
+              
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Code Ligne</label>
+                      <input id="input-address"type="text"
+                      class="form-control"
+                      name="codeLinge"
+                      [(ngModel)]="form.codeLigne"
+                      required
+                      minlength="3"
+                      maxlength="20"
+                      #username="ngModel">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Nom de Ligne</label>
+                      <input id="input-address" type="text"
+                      class="form-control"
+                      name="nomLigne"
+                      [(ngModel)]="form.nomType"
+                      required
+                      minlength="3"
+                      maxlength="20"
+                      #username="ngModel">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-address">Code Depot</label>
+                        <input id="input-address" type="text"
+                        class="form-control"
+                        name="codeDepots"
+                        [(ngModel)]="form.codeDepots"
+                        required
+                        minlength="3"
+                        maxlength="20"
+                        #username="ngModel">
+                      </div>
+                    </div>
+                  </div>
+                <div class="row">
+                  <div class="row form-group">
+                    
+                    <div class="col-md-12">
+                      <label class="control-label">Type</label><br/>
+                      <select friendly-name="role" id="role" name="role" class="col-md-12 form-control" ng-required="true"
+                        onchange='OnChange()'>
+                        <option>Type</option>
+                        <option>type1</option>
+                        <option>type2</option>
+                        
+  
+                      </select>
+                    </div>
+                  </div>
+                </div><br>
+               
+                <div class="row"> 
+                  <div class="col-lg-12">
+                    <button type="reset" (click)="onCancel()"
+                      class="btn btn-secondary btn-fill float-right">Annuler</button>
+                    <button type="submit" class="btn bg-success btn-fill float-right" *ngIf="isUser()" >Ajouter</button>
+                    <button type="submit" class="btn bg-success btn-fill float-right" *ngIf="isAdmin()" >Ajouter</button>
+
+                  </div>
+                </div>
+              </div>
+  
+  
+              <!-- Description -->
+  
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div div *ngIf="mode == 'list'" class="content">
+      <div class="col">
+        <div class="card bg-success shadow">
+          <div class="card-header bg-success border-0">
+            <h3 class="text-white mb-0">Liste De Ligne </h3>
+          </div>
+  
+          <div class="table-responsive">
+            <table class="table align-items-center table-success table-flush">
+              <thead class="thead-success">
+                <tr>
+                  <th scope="col">ID</th>
+  
+                  <th scope="col">Code</th>
+                  <th scope="col">Nom </th>
+  
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">
+                    <div class="media align-items-center">
+  
+                      <div class="media-body">
+                        <span class="mb-0 text-sm">L1</span>
+                      </div>
+                    </div>
+                  </th>
+  
+                  <td>
+                    <div class="media align-items-center">
+  
+                      <div class="media-body">
+                        <span class="mb-0 text-sm">1</span>
+                      </div>
+                    </div>
+  
+                  </td>
+  
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <span class="mr-2">Sercuit 2</span>
+                      <div>
+                        <div class="progress">
+                          <div class="progress-bar bg-success" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                            aria-valuemax="100" style="width: 60%;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="text-left">
+                    <button *ngIf="isAdmin()" rel="tooltip" title="Ajouter un doctorant" class="btn btn-danger btn-fill float-right now-ui-icons objects_spaceship"
+                      (click)="onDeleteLigne()"></button>
+                    <button *ngIf="isAdmin()" rel="tooltip" title="Ajouter un doctorant" class="btn btn-secondary btn-fill float-right btn btn-secondary btn-fill float-right now-ui-icons  arrows-1_refresh-69"
+                      (click)="onEditLigne()"></button> 
+                    <button *ngIf="isAdmin()" rel="tooltip" title="Ajouter un doctorant" class="btn btn-success btn-fill float-right btn btn-success btn-fill float-right now-ui-icons files_box"
+                      (click)="Detaille()"></button>
+                    <button *ngIf="isUser1()" rel="tooltip" title="Ajouter un doctorant" class="btn btn-success btn-fill float-right now-ui-icons files_box "
+                      (click)="Detaille()"></button>  
+                  </td>
+                  
+                </tr>
+                
+  
+  
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,184 @@
+ <div class="sidebar-wrapper">
+  <div class="logo">
+    
+      <div class="logo-img">
+       
+      </div>
+      <h1>TRANSTU</h1>
+    
+  </div>
+  <ul class="nav responsive-nav">
+    <li *ngIf="isMobileMenu()">
+      <a class="dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-dashboard"></i>
+        <p class="hidden-lg hidden-md">Dashboard</p>
+      </a>
+    </li>
+    <li class="dropdown" *ngIf="isMobileMenu()">
+      <a class="dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-globe"></i>
+        <b class="caret hidden-sm hidden-xs"></b>
+        <span class="notification hidden-sm hidden-xs">5</span>
+        <p class="hidden-lg hidden-md">
+          5 Notifications
+          <b class="caret"></b>
+        </p>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Notification 1</a></li>
+        <li><a href="#">Notification 2</a></li>
+        <li><a href="#">Notification 3</a></li>
+        <li><a href="#">Notification 4</a></li>
+        <li><a href="#">Another notification</a></li>
+      </ul>
+    </li>
+    <li *ngIf="isMobileMenu()">
+      <a>
+        <i class="fa fa-search"></i>
+        <p class="hidden-lg hidden-md">Search</p>
+      </a>
+    </li>
+    <li *ngIf="isMobileMenu()">
+      <a href="">
+        <p>Account</p>
+      </a>
+    </li>
+    <li class="dropdown" *ngIf="isMobileMenu()">
+      <a class="dropdown-toggle" data-toggle="dropdown">
+        <p>
+          Dropdown
+          <b class="caret"></b>
+        </p>
+
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+      </ul>
+    </li>
+    <li *ngIf="isMobileMenu()">
+      <a>
+        <p>Log out</p>
+      </a>
+    </li>
+    <li class="separator hidden-lg hidden-md" *ngIf="isMobileMenu()"></li>
+    <li routerLinkActive="active">
+      <a [routerLink]="'/menu/profile'">
+        <i class="now-ui-icons users_single-02"></i>
+        <p>Profile</p>
+      </a>
+    </li>
+    <li *ngIf="isAdmin()"  routerLinkActive="active">
+      <a [routerLink]="'/menu/reclamation'">
+        <i class="now-ui-icons files_paper"></i>
+        <p>Reclamation</p>
+      </a>
+    </li>
+    <li *ngIf="isUser()"  routerLinkActive="active">
+      <a [routerLink]="'/menu/reclamation'">
+        <i class="now-ui-icons files_paper"></i>
+        <p>Reclamation</p>
+      </a>
+    </li>
+    <li *ngIf="isUser1()"  routerLinkActive="active">
+      <a [routerLink]="'/menu/doctorants'">
+        <i class="now-ui-icons files_paper"></i>
+        <p>liste des Reclamation</p>
+      </a>
+    </li>
+    
+    <li *ngIf="isAdmin()" routerLinkActive="active">
+      <a [routerLink]="'/menu/equipement'">
+        <i class="now-ui-icons ui-2_settings-90"></i>
+        <p>Eq de Securité</p>
+      </a>
+    </li>
+    <li *ngIf="isUser()" routerLinkActive="active">
+      <a [routerLink]="'/menu/equipement'">
+        <i class="now-ui-icons ui-2_settings-90"></i>
+        <p>Eq de Securité</p>
+      </a>
+    </li>
+    <li *ngIf="isUser1()"  routerLinkActive="active">
+      <a [routerLink]="'/menu/equipement'">
+        <i class="now-ui-icons ui-2_settings-90"></i>
+        <p>liste de Eq de Securité</p>
+      </a>
+    </li>
+    <li *ngIf="isAdmin()" routerLinkActive="active">
+      <a [routerLink]="'/menu/message'">
+        <i class="now-ui-icons business_globe"></i>
+        <p>Notification</p>
+      </a>
+    </li>
+    <li *ngIf="isAdmin()" routerLinkActive="active">
+      <a [routerLink]="'/menu/inscription'">
+        <i class="now-ui-icons users_single-02"></i>
+        <p>Nouvel Utilisateur</p>
+      </a>
+    </li>
+    
+    <li *ngIf="isAdmin()" routerLinkActive="active">
+      <a [routerLink]="'/menu/transport'">
+        <i class="now-ui-icons shopping_delivery-fast"></i>
+        <p>Moyen de Transport</p>
+      </a>
+    </li>
+    
+    <li *ngIf="isUser1()" routerLinkActive="active">
+      <a [routerLink]="'/menu/transport'">
+        <i class="now-ui-icons transportation_bus-front-12"></i>
+        <p>liste de Moyen de Transport</p>
+      </a>
+    </li>
+    <li *ngIf="isUser1()"  routerLinkActive="active">
+      <a [routerLink]="'/menu/rapport'">
+        <i class="now-ui-icons files_single-copy-04"></i>
+        <p>Rapport</p>
+      </a>
+    </li>
+    <li *ngIf="isAdmin()"  routerLinkActive="active">
+      <a [routerLink]="'/menu/rapport'">
+        <i class="now-ui-icons files_single-copy-04"></i>
+        <p>Rapports</p>
+      </a>
+    </li>
+    <li *ngIf="isAdmin()"  routerLinkActive="active">
+      <a [routerLink]="'/menu/utilisateur'">
+        <i class="now-ui-icons business_badge"></i>
+        <p>Utilisateurs</p>
+      </a>
+    </li>
+    <li *ngIf="isAdmin()"  routerLinkActive="active">
+      <a [routerLink]="'/menu/station'">
+        <i class="now-ui-icons transportation_bus-front-12"></i>
+        <p>Stations</p>
+      </a>
+    </li>
+    <li *ngIf="isAdmin()"  routerLinkActive="active">
+      <a [routerLink]="'/menu/ligne'">
+        <i class="now-ui-icons design_vector"></i>
+        <p>Les lignes</p>
+      </a>
+    </li>
+    <li *ngIf="isAdmin()"  routerLinkActive="active">
+      <a [routerLink]="'/menu/depot'">
+        <i class="now-ui-icons business_bank"></i>
+        <p>Les Dépóts</p>
+      </a>
+    </li>
+    <li routerLinkActive="active">
+      <a [routerLink]="'/menu/map'">
+        <i class="now-ui-icons location_pin"></i>
+        <p>Maps</p>
+      </a>
+    </li>
+<br>
+    
+  </ul>
+</div> 

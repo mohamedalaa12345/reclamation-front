@@ -1,0 +1,127 @@
+<div class="card">
+  <div class="header">
+    <h4 class="title"><span class="now-ui-icons business_globe"></span> Notification</h4>
+    <br>
+    <p class="category">Gestion des Notification</p>
+  </div>
+  <div class="content">
+   
+
+    <div *ngIf="mode == 'list'" class="content">
+      <div class="ct-chart">
+        <div class="table-responsive">
+          <table class="table">
+              <thead class="text-success">
+                  <th>
+                      ID
+                  </th>
+                  <th>
+                      Nom
+                  </th>
+                  <th>
+                      Function
+                  </th>
+                    <th>
+                       Email
+                    </th>
+                    <th>
+                      Telephone
+                   </th>
+                  <th>
+                      statut
+                  </th>
+                  
+              </thead>
+              <tbody>
+                 
+                  <tr>
+                      <td>
+                          2
+                      </td>
+                      <td>
+                        mohamed ali
+                      </td>
+                      <td>
+                         police 
+                      </td>
+                      <td>
+                        police@gmail.com 
+                     </td>
+                     <td>
+                      +216-55667876
+                   </td>
+                      <td >
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch1" checked="true">
+                            <label class="custom-control-label" for="customSwitch1">
+                                <div class="badge badge-success text-wrap" style="width: 6rem;">
+                                Active
+                              </div>
+                            </label>
+                          </div>
+                        
+                      </td>
+                      <td class="text-center">
+                          <button  rel="tooltip" title="Ajouter un doctorant" class="btn btn-danger btn-fill float-right now-ui-icons objects_spaceship"
+                            (click)="OnDeleteRec()"></button>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>
+                          3
+                      </td>
+                      <td>
+                          imed boubdellah
+                      </td>
+                     
+                      <td>
+                          PDG transtu
+                      </td>
+                      <td>
+                        PDG@gmail.com
+                    </td>
+                    <td>
+                      +216-25456765 
+                    </td>
+                      <td >
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch2">
+                            <label class="custom-control-label" for="customSwitch2">
+                                <div class="badge badge-danger text-wrap" style="width: 6rem;">
+                                Disactive
+                              </div>
+                            </label>
+                          </div>
+                      </td>
+                      <td class="text-center">
+                          <button  rel="tooltip" title="Ajouter un doctorant" class="btn btn-danger btn-fill float-right now-ui-icons objects_spaceship"
+                            (click)="OnDeleteRec()"></button>
+                          <button  rel="tooltip" title="Ajouter un doctorant" class="btn btn-secondary btn-fill float-right now-ui-icons  arrows-1_refresh-69"
+                            (click)="oneditRec()"></button>
+                          <button  rel="tooltip" title="Ajouter un doctorant" class="btn btn-success btn-fill float-right now-ui-icons files_box"
+                            (click)="onReclamation()"></button>
+                       
+                        </td>
+                  </tr>
+                  
+                
+              </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+    <div class="footer">
+      <div class="legend text-center">
+        <div class="pagination pagination-primary text-center">
+          <jw-pagination  [items]="messages" [pageSize]="3" (changePage)="onChangePage($event)"></jw-pagination>
+        </div>
+        <br>
+      </div>
+      <br>
+      <hr *ngIf="true">
+      <div class="stats">
+        <i [ngClass]="'fa fa-clock-o'"></i>DoctoGest © 2020</div>
+    </div>
+  </div>
+</div>

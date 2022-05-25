@@ -1,0 +1,58 @@
+<div class="card">
+    <div class="header">
+      <h4 class="title"><span class="now-ui-icons files_single-copy-04"></span> Statistique</h4>
+      <br>
+      <p class="category"></p>
+    </div>
+    <div class="content">
+     
+  
+      <div class="content">
+        <div class="ct-chart">
+          <div class="table-full-width">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th class="text-center"> </th>
+                  <th class="text-center"> Title</th>
+                  <th class="text-center"> Email</th>
+                  <th class="text-center"> Notification</th>
+                  <th class="text-center"> Supprimer</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="button" *ngFor=" let m of pageOfItems">
+                  <td class="text-center">&nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="now-ui-icons ui-1_calendar-60"></i>
+                  </td>
+                  <td class="text-center">{{m.nom}}</td>
+                  <td class="text-center">{{m.email}}</td>
+                  <td class="text-center">{{m.message}}</td>
+                  <td class="text-center">
+  
+                    <button type="button" rel="tooltip" title="Supprimer" class="btn btn-danger btn-simple btn-xs">
+                      <i class="now-ui-icons shopping_basket"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+      </div>
+      <div class="footer">
+        <div class="legend text-center">
+          <div class="pagination pagination-primary text-center">
+            <jw-pagination  [items]="messages" [pageSize]="3" (changePage)="onChangePage($event)"></jw-pagination>
+          </div>
+          <br>
+        </div>
+        <br>
+        <hr *ngIf="true">
+        <div class="stats">
+          <i [ngClass]="'fa fa-clock-o'"></i>DoctoGest © 2020</div>
+      </div>
+    </div>
+  </div>
+  

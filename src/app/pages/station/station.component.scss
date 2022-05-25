@@ -1,0 +1,65 @@
+
+//@import "src/assets/sass/light-bootstrap-dashboard-all.scss";
+
+.form-check {
+  padding-left: 0rem;
+}
+label{
+  font-weight: 400 !important;
+  color: rgb(255, 255, 255)
+}
+h4{
+    font-weight: 600 !important;
+    color: rgb(0, 0, 0)
+  }
+
+@import "src/assets/sass/light-bootstrap-dashboard-all.scss";
+
+.form-check {
+  padding-left: 0rem;
+}
+label{
+  font-weight: 400 !important;
+}
+
+//======================================================
+.modal-content.modal-header {
+  border-bottom: solid 0.1px !important;
+  padding-top: 24px;
+  padding-right: 24px;
+  padding-bottom: 0;
+  padding-left: 24px;
+}
+.urgence{
+  color: grey;
+}
+
+.form-control{
+  height: 100%;
+}
+
+.legend{
+  width: 100%;
+}
+.bg {
+  /* The image used */
+  background-image: url("../../../assets/img/bg12.png");
+  /* Half height */
+  height: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.full {
+  height: 100vh;
+  max-height: 1050px;
+  color: rgb(0, 0, 0);
+  position: relative;
+}
+
+.fullImage {
+  height: 75vh;
+  max-height: 1050px;
+  position: relative;
+}

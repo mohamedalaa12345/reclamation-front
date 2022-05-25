@@ -1,0 +1,113 @@
+<div class="row">
+          <div class="col-md-12">
+              <div class="card card-plain">
+                  <div class="card-header bg-success border-0">
+                    <h4 class="title"><span class="now-ui-icons users_single-02"></span> UTILISATEURS</h4>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table">
+                            <thead class="text-success">
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    UserName
+                                </th>
+                                <th>
+                                    Email
+                                </th>
+                                <th>
+                                    statut
+                                </th>
+                                
+                            </thead>
+                            <tbody>
+                               
+                                <tr>
+                                    <td>
+                                        2
+                                    </td>
+                                    <td>
+                                        Minerva Hooper
+                                    </td>
+                                    <td>
+                                        Curaçao
+                                    </td>
+                                    
+                                    <td >
+                                      <div *ngIf="isActive()" class="custom-control custom-switch">
+                                          <input type="checkbox" class="custom-control-input" id="customSwitch1" checked="true">
+                                          <label class="custom-control-label" for="customSwitch1">
+                                              <div class="badge badge-success text-wrap" style="width: 6rem;">
+                                              Active
+                                            </div>
+                                          </label>
+                                        </div>
+                                        <div *ngIf="!isActive()" class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                            <label class="custom-control-label" for="customSwitch1">
+                                                <div class="badge badge-danger text-wrap" style="width: 6rem;">
+                                                Disactive
+                                              </div>
+                                            </label>
+                                          </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <button  rel="tooltip" title="Ajouter un doctorant" class="btn btn-danger btn-fill float-right now-ui-icons objects_spaceship"
+                                          (click)="OnDeleteRec()"></button>
+                                        <button  rel="tooltip" title="Ajouter un doctorant" class="btn btn-secondary btn-fill float-right now-ui-icons  arrows-1_refresh-69"
+                                          (click)="oneditRec()"></button>
+                                        <button  rel="tooltip" title="Ajouter un doctorant" class="btn btn-success btn-fill float-right now-ui-icons files_box"
+                                          (click)="onReclamation()"></button>
+                                     
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        3
+                                    </td>
+                                    <td>
+                                        Sage Rodriguez
+                                    </td>
+                                   
+                                    <td>
+                                        Baileux
+                                    </td>
+                                    <td >
+                                        <div *ngIf="isActive()" class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="customSwitch2"  checked="true">
+                                            <label class="custom-control-label" for="customSwitch2">
+                                                <div class="badge badge-success text-wrap" style="width: 6rem;">
+                                                Active
+                                              </div>
+                                            </label>
+                                          </div>
+                                          <div *ngIf="!isActive()" class="custom-control custom-switch">
+                                              <input type="checkbox" class="custom-control-input" id="customSwitch2"  >
+                                              <label class="custom-control-label" for="customSwitch2">
+                                                  <div class="badge badge-danger text-wrap" style="width: 6rem;">
+                                                  Disactive
+                                                </div>
+                                              </label>
+                                            </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <button  rel="tooltip" title="Ajouter un doctorant" class="btn btn-danger btn-fill float-right now-ui-icons objects_spaceship"
+                                          (click)="OnDeleteUser()"></button>
+                                        <button  rel="tooltip" title="Ajouter un doctorant" class="btn btn-secondary btn-fill float-right now-ui-icons  arrows-1_refresh-69"
+                                          (click)="oneditRec()"></button>
+                                          <a [routerLink]="'/menu/profile'"><button  rel="tooltip" title="Ajouter un doctorant" class="btn btn-success btn-fill float-right now-ui-icons files_box"
+                                          (click)="onReclamation()"></button></a>
+                                     
+                                      </td>
+                                </tr>
+                                
+                              
+                            </tbody>
+                        </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>

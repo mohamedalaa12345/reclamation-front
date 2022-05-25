@@ -1,0 +1,253 @@
+<div class="card bg">
+    <div class="header">
+      <h4 class="title"><span class="now-ui-icons business_bank"></span>  Dépóts</h4>
+      <br>
+      <button *ngIf="mode == 'list'" rel="tooltip" title="Ajouter un Extincteur"
+        class="btn bg-success btn-fill now-ui-icons ui-1_simple-add" (click)="onNewDepot()"></button>
+  
+    </div>
+    <div class="container-fluid mt--7">
+  
+        <div *ngIf="mode=='edit-depot'" class="container ">
+          <div class="card  shadow">
+            <div class="card-header bg-success border-0">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0 text-white">Dépóts</h3>
+                </div>
+    
+    
+              </div>
+            </div>
+            <div class="card-body">
+              <form >
+                <h6 class="heading-small text-muted mb-4">Information de Dépót </h6>
+                <div class="pl-lg-4">
+                
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-address">Code Dépót</label>
+                        <input id="input-address" type="text"
+                        class="form-control"
+                        name="codeDepots"
+                        [(ngModel)]="form.codeDepots"
+                        required
+                        minlength="3"
+                        maxlength="20"
+                        #username="ngModel">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-address">Nom de Dépót</label>
+                        <input id="input-address" type="text"
+                        class="form-control"
+                        name="nomDepot"
+                        [(ngModel)]="form.nomDepot"
+                        required
+                        minlength="3"
+                        maxlength="20"
+                        #username="ngModel">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-address">Adresse</label>
+                          <input id="input-address" type="text"
+                          class="form-control"
+                          name="Adresse"
+                          [(ngModel)]="form.Adresse"
+                          required
+                          minlength="3"
+                          maxlength="20"
+                          #username="ngModel">
+                        </div>
+                      </div>
+                    </div>
+                 
+                 
+                  <div class="row"> 
+                    <div class="col-lg-12">
+                      <button type="reset" (click)="onNewLigne()"
+                        class="btn btn-secondary btn-fill float-right">Annuler</button>
+                      <button type="submit" class="btn bg-success btn-fill float-right" *ngIf="isUser()" >Enrigistrer</button>
+                      <button type="submit" class="btn bg-success btn-fill float-right" *ngIf="isAdmin()" >Enrigistrer</button>
+                    </div>
+                  </div>
+                </div>
+    
+    
+                <!-- Description -->
+    
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="container-fluid mt--7">
+  
+      <div *ngIf="mode=='new-depot'" class="container ">
+        <div class="card  shadow">
+          <div class="card-header bg-success border-0">
+            <div class="row align-items-center">
+              <div class="col-8">
+                <h3 class="mb-0 text-white">Dépót</h3>
+              </div>
+  
+  
+            </div>
+          </div>
+          <div class="card-body">
+            <form >
+              <h6 class="heading-small text-muted mb-4">Information de Dépót </h6>
+              <div class="pl-lg-4">
+              
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Code Dépót</label>
+                      <input id="input-address" type="text"
+                      class="form-control"
+                      name="codeDepots"
+                      [(ngModel)]="form.codeDepots"
+                      required
+                      minlength="3"
+                      maxlength="20"
+                      #username="ngModel">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Nom de Dépót</label>
+                      <input id="input-address" type="text"
+                      class="form-control"
+                      name="nomDepot"
+                      [(ngModel)]="form.nomDepot"
+                      required
+                      minlength="3"
+                      maxlength="20"
+                      #username="ngModel">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-address">Adresse</label>
+                        <input id="input-address" type="text"
+                        class="form-control"
+                        name="Adresse"
+                        [(ngModel)]="form.Adresse"
+                        required
+                        minlength="3"
+                        maxlength="20"
+                        #username="ngModel">
+                      </div>
+                    </div>
+                  </div>
+               
+               
+                <div class="row"> 
+                  <div class="col-lg-12">
+                    <button type="reset" (click)="onNewLigne()"
+                      class="btn btn-secondary btn-fill float-right">Annuler</button>
+                    <button type="submit" class="btn bg-success btn-fill float-right" *ngIf="isUser()" >Ajouter</button>
+                    <button type="submit" class="btn bg-success btn-fill float-right" *ngIf="isAdmin()" >Ajouter</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div div *ngIf="mode == 'list'" class="content">
+      <div class="col">
+        <div class="card bg-success shadow">
+          <div class="card-header bg-success border-0">
+            <h3 class="text-white mb-0">Liste Des Dépóts </h3>
+          </div>
+  
+          <div class="table-responsive">
+            <table class="table align-items-center table-success table-flush">
+              <thead class="thead-success">
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Code</th>
+                  <th scope="col">Nom </th>
+                  <th scope="col">Adresse </th>
+  
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">
+                    <div class="media align-items-center">
+  
+                      <div class="media-body">
+                        <span class="mb-0 text-sm">E1</span>
+                      </div>
+                    </div>
+                  </th>
+  
+                  <td>
+                    <div class="media align-items-center">
+  
+                      <div class="media-body">
+                        <span class="mb-0 text-sm">1</span>
+                      </div>
+                    </div>
+  
+                  </td>
+  
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <span class="mr-2">Dépót 1</span>
+                      <div>
+                        <div class="progress">
+                          <div class="progress-bar bg-success" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                            aria-valuemax="100" style="width: 60%;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <span class="mr-2">Ariena</span>
+                      <div>
+                        <div class="progress">
+                          <div class="progress-bar bg-success" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                            aria-valuemax="100" style="width: 60%;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="text-left">
+                    <button *ngIf="isAdmin()" rel="tooltip" title="Ajouter un doctorant" class="btn btn-danger btn-fill float-right now-ui-icons objects_spaceship"
+                      (click)="DeleteLin()"></button>
+                    <button *ngIf="isAdmin()" rel="tooltip" title="Ajouter un doctorant" class="btn btn-secondary btn-fill float-right btn btn-secondary btn-fill float-right now-ui-icons  arrows-1_refresh-69"
+                      (click)="onEditLigne()"></button> 
+                    <button *ngIf="isAdmin()" rel="tooltip" title="Ajouter un doctorant" class="btn btn-success btn-fill float-right btn btn-success btn-fill float-right now-ui-icons files_box"
+                      (click)="onNewLigne()"></button>
+                    <button *ngIf="isUser1()" rel="tooltip" title="Ajouter un doctorant" class="btn btn-success btn-fill float-right now-ui-icons files_box "
+                      (click)="onNewLigne()"></button>  
+                  </td>
+                  
+                </tr>
+                
+  
+  
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
